@@ -1,14 +1,14 @@
-from conexao import conectar
+from conexão import conectar
 
 class Aluno:
-    def __init__(self, nome_aluno, media, id_aluno):
-        self.id = id
+    def __init__(self, nome_aluno, media = None, id_aluno = None):
+        self.id_aluno = id_aluno
         self.nome_aluno = nome_aluno
         self.media = media
 
     def exibir(self):
         texto = f"""
-        Matricula: {self.id}
+        Matricula: {self.id_aluno}
         Aluno: {self.nome_aluno}
         Media: {self.media}
         """
@@ -18,13 +18,13 @@ class Aluno:
         conexao = conectar()
         cursor = conexao.cursor()
 
-        sql = "INSERT INTO aluno (nome_aluno) VALUES (%s)"
-        cursor.execute(sql, (self.nome_aluno))
+        sql = "INSERT INTO aluno (nome_aluno, media, id_aluno) VALUES (%s, %s, %s)"
+        cursor.execute(sql, (self.nome_aluno, self.media, self.id_aluno))
 
         conexao.commit()
         conexao.close()
 
-def lista_alunos():
+def listar_alunos():
     conexao = conectar()
     cursor = conexao.cursor()
 
