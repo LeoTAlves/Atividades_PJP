@@ -9,10 +9,11 @@ def exibir_menu():
     print("=====================")
 
 def cadastrar():
-    nome_aluno = input("Digite o nome do aluno: ")
+    nome = input("Digite o nome do aluno: ")
+    media = float(input("Digite a média do aluno: "))
 
-    nome_aluno = Aluno (nome_aluno)
-    nome_aluno.salvar()
+    aluno = Aluno(nome, media)
+    aluno.salvar()
 
 def mostrar():
     for nome_aluno in listar_alunos():
@@ -23,7 +24,7 @@ while True:
     opcao = input("Digite um opção: ")
 
     if opcao == "0":
-        print=input("programa finalizado")
+        print("programa finalizado")
         break
     elif opcao == "1":
         cadastrar()
